@@ -3,15 +3,18 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const Home: React.FC = () => {
+  const javaapi_endpoint = process.env.javaapi_endpoint as string;
+  const goapi_endpoint = process.env.goapi_endpoint as string;
+
   const [response, setResponse] = useState('');
 
   const callJavaAPI = async () => {
-    const result = await axios.get('http://localhost:8080');
+    const result = await axios.get(javaapi_endpoint);
     setResponse(result.data);
   };
 
   const callGoAPI = async () => {
-    const result = await axios.get('http://localhost:8081');
+    const result = await axios.get(goapi_endpoint);
     setResponse(result.data);
   };
 
